@@ -2,9 +2,12 @@ package com.example.user.a20161024_test4;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String cities[] = {"台北", "台中","高雄"};
     String codes[] = {"02", "04", "07"};
     Spinner spinner2;
+    TextView tv;
     ArrayList<Map<String,String>> mylist;
     ArrayAdapter<String> adapter;
     SimpleAdapter adapter2;
@@ -28,6 +32,19 @@ public class MainActivity extends AppCompatActivity {
                                          //(目前的Activity,  layout格式(內建),  string陣列名稱)
 
         spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                tv = (TextView) findViewById(R.id.textView);
+                tv.setText(fruit[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         //=======================================
         spinner2 = (Spinner) findViewById(R.id.spinner2);
